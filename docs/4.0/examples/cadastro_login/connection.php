@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
-    $username = "guardiao";
-    $password = "Phantom3451";
+    $username = "login";
+    $password = "senha";
     $database = "UFSBRA_Cambio";
 
     // Create connection
