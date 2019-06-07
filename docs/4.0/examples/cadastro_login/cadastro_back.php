@@ -3,7 +3,7 @@
 session_start();
 
 //Conexão com o banco de dados
-$conexao = mysqli_connect("localhost", "guardiao", "Phantom3451", "UFSBRA_Cambio");
+$conexao = mysqli_connect("localhost", "login", "senha", "UFSBRA_Cambio");
  
 $nome           = $_POST['name'];
 $cpf            = $_POST['cpf'];
