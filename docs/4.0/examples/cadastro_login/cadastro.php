@@ -36,11 +36,11 @@
               </div>
               <div class="col-md-3 mb-3">
                 <label for="rg">RG</label>
-                <input type="text" class="form-control" style="text-align: center" name="rg" id="rg" placeholder="00.000.000-0" value="" required>
+                <input type="text" class="form-control" style="text-align: center" name="rg" id="rg" placeholder="Apenas digitos" value="" required>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" style="text-align: center" name="cpf" id="cpf" placeholder="000.000.000-00" value="" required>
+                <input type="text" class="form-control" style="text-align: center" name="cpf" id="cpf" placeholder="Apenas digitos" value="" required>
               </div>
             </div>
             <div class="row">
@@ -122,8 +122,8 @@
     </form>
       
     <script type="text/javascript">
-        $("#cpf").mask("000.000.000-00");
-        $("#rg").mask("00.000.000-0");
+        $("#cpf").mask("00000000000");
+        $("#rg").mask("000000000");
         $("#cep").mask("00000-000");
         $("#telefone1").mask("(00)0000-0000");
         $("#telefone2").mask("(00)00000-0000");
