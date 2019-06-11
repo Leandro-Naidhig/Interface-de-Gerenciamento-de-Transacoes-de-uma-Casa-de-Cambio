@@ -1,6 +1,8 @@
 <?php
     session_start();
-    include('connection.php');
+    include('classBd/connection.php');
+    //AṔI
+    include('includes/cotacoesAPI.php');
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -9,20 +11,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="icons/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+HK&display=swap" rel="stylesheet">
 
     <title>Cotações - UFSBRA Câmbio</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
+    <link href="styles/jumbotron.css" rel="stylesheet">
 </head>
 <body>
-    
+  
+
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <img style="height: 50px" src="Imagens/cambio.png" class="img-fluid pr-3">
+    <img style="height: 50px" src="images/cambio.png" class="img-fluid pr-3">
     <a class="navbar-brand" href="#">UFSBRA Câmbio</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,9 +37,16 @@
         <li class="nav-item">
           <a class="nav-link" href="index.php">Página Inicial</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="compras.php">Compras</a>
-        </li>
+        <!---->
+        <?php
+          if(isset($_SESSION['usuario_cpf'])) {
+        
+            echo '<li class="nav-item">
+              <a class="nav-link" href="compras.php">Compras</a>
+            </li>';
+          }
+        ?>
+        
         <li class="nav-item">
           <a class="nav-link" href="cotacoes.php">Cotações</a>
         </li>
@@ -49,7 +60,7 @@
       <?php
         if(isset($_SESSION['usuario_cpf'])) {
         ?>
-            <a href="../cliente/Central_1.html"><button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit"><img src="Imagens/central_user.png" width="30px" height="30px"> Seja Bem Vindo <b><?php echo $_SESSION['usuario_nome'] ?></b></button></a>
+            <a href="Central_1.php"><button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit"><img src="images/central_user.png" width="30px" height="30px"> Seja Bem Vindo <b><?php echo $_SESSION['usuario_nome'] ?></b></button></a>
             <a href="../cliente/logout.php"><button class="btn btn-danger my-1 my-sm-0" type="submit" style="height:43px;">Sair</button></a>
       <?php
         } else {   
@@ -62,44 +73,194 @@
     </div>
   </nav>
       
-    <main role="main">
-
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <div class="container text-white">
-          <h1 class="display-3 text-center">UFSBRA Câmbio</h1>
-          <p class="text-center">"A melhor casa de câmbio com as melhores cotações do mercado, proporcionando um bom negócio na venda da compra de moedas estrangeiras!"</p>
-        </div>
-      </div>
-      <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-          <div class="col-md-4">
-            <center><img src="../../../../moedas.jpg" class="img-fluid" alt="Imagem responsiva" style="max-width: 50%"></center>
-            <h2 class="text-center">Moedas em espécie disponiveis</h2>
-            <p class="text-center">A UFSBRA tem uma variedade enorme de moedas estrangeiras disponíveis para compra e venda no mercado. Verfique as informações de cada uma delas.</p>
-            <p class="text-center"><a class="btn btn-warning" href="#" role="button">Ver detalhes &raquo;</a></p>
+    <div class="wraper">
+      <main role="main">
+         <!-- Main jumbotron for a primary marketing message or call to action -->
+     
+      <form method="post" action="cotacoes.php" id="formulario"> 
+          <div class="jumbotron">
+            <div class="container text-white">
+              <h1 class="display-3 text-center">Cotação de Moedas</h1>
+            </div>
           </div>
-          <div class="col-md-4">
-            <center><img src="../../../../pagamento.jpg" class="img-fluid" alt="Imagem responsiva" style="max-width: 50%"></center>
-            <h2 class="text-center">Escolha a forma de pagamento de suas transações</h2>
-            <p class="text-center">Todos os nossos clientes tem a opção de escolher o método de pagamento na compra de alguma moeda, tendo a escolha por dinheiro, por cartão de crédito e débito!</p>
-            <p class="text-center"><a class="btn btn-warning" href="#" role="button">Ver detalhes &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <center><img src="../../../../central.png" class="img-fluid" alt="Imagem responsiva" style="max-width: 50%"></center>
-            <h2 class="text-center">Central do Usuário</h2>
-            <p class="text-center">Nosso sistema conta uma central de usuário contendo todas as operações realizadas no site como: status de pedidos de compra ou venda de moedas, histórico de suas transações até o momento, dados pessoais, entre outras informações.</p>
-            <p class="text-center"><a class="btn btn-warning" href="#" role="button">Acessar Central de Usuário &raquo;</a></p>
-          </div>
-        </div>
-      </div> <!-- /container -->
-     <img src="../../../../negocios.jpeg" class="img-fluid" alt="Imagem responsiva" style="width:100%;">
-      
 
-    </main>
+          <div class="row date-header">     
+              <div class="col-lg-3 col-md-5 invisble"></div>
+              <div class="col-lg-5 col-md-4 col-sm-12" >
+                <h3 style="margin-left:auto;margin-top:10px; margin-bottom:20px;"> Período: </h3>
+              </div>
+              <div class="col-lg-3 col-md-4 invisible" ></div>
+          </div>
 
-    <footer class="bg-dark">
+          
+          <div class="row input-data">
+          
+              <div class="col-lg-3 col-md-3 col-sm-12 invisible" >
+              </div>
+
+              <div class="col-lg-1 col-md-1 col-sm-12 ">
+                  <h5 id="input-inicio"> Incío:</h4>
+              </div>
+
+              
+              <div class="col-lg-2 col-md-2 col-sm-12" style="padding-left:0; padding-right:100px;">
+                  <span class="input-span"> Dia: </span>
+                  <select class="custom-select input-data-elem" name="input-dia1" id="input-dia1">
+                    <?php include('includes/selectDays.html') ?>
+                  </select>
+              </div>
+
+
+              <div class="col-lg-2 col-md-2 col-sm-12" style="padding-left:0px; padding-right:100px;">
+                  <span class="input-span"> Mês: </span>
+                  <select class="custom-select input-data-elem" style="width:100px;" name="input-mes1" id="input-mes1">
+                  <?php include('includes/selectMonths.html') ?>
+                  </select>
+              </div>
+
+
+              <div class="col-lg-2 col-md-2 col-sm-12 dropdown" style="padding-left:0px; padding-right:100px;">
+                  <span class="input-span"> Ano: </span>
+                  <select class="custom-select input-data-elem" name="input-ano1" id="input-ano1"> 
+                    <?php include("includes/selectYear.html")?>
+                  </select>
+                
+              
+            </div>
+
+            
+
+            <div class="col-lg-2 col-md-2 col-sm-12 invisble" >
+            </div>
+
+          </div>
+
+
+          <div class="row input-data">
+        
+            <div class="col-lg-3 col-md-3 col-sm-12 invisible" >
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-12 "   >
+                <h5 id="input-inicio"> Até:</h5>
+            </div>
+
+            
+            <div class="col-lg-2 col-md-2 col-sm-12" style="padding-left:0; padding-right:100px;">
+                <span class="input-span"> Dia: </span>
+                <select class="custom-select input-data-elem" name="input-dia2" id="input-dia2">
+                  <?php include('includes/selectDays.html') ?>
+                </select>
+            </div>
+
+
+            <div class="col-lg-2 col-md-2 col-sm-12" style="padding-left:0px; padding-right:100px;">
+                <span class="input-span"> Mês: </span>
+                <select class="custom-select input-data-elem" style="width:100px;" name="input-mes2" id="input-mes2">
+                <?php include('includes/selectMonths.html') ?>
+                </select>
+            </div>
+
+
+            <div class="col-lg-2 col-md-2 col-sm-12 dropdown" style="padding-left:0px; padding-right:100px;">
+                <span class="input-span"> Ano: </span>
+                <select class="custom-select input-data-elem" name="input-ano2" id="input-ano2"> 
+                  <?php include("includes/selectYear.html")?>
+                </select>
+            </div>            
+        
+
+            <div class="col-lg-2 col-md-2 col-sm-12 invisble" ></div>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-lg-3 col-md-3 invisble"></div>
+
+            <div class="col-lg-5 col-md-5 col-sm-12" >
+                <h3 style="margin-left:auto; margin-bottom:20px;"> Selecione as Moedas: </h3>
+            </div>
+            
+            <div class="col-lg-4 col-md-4 invisible" ></div>
+            
+          </div>
+
+          <div class="row input-data">
+            
+                <div class="col-lg-3 col-md-3 col-sm-12 invisible" >
+                </div>
+
+                <div class="col-lg-1 col-md-1 col-sm-12 " style="padding-right:50px;">
+                    <h5 id="input-inicio"> Sua Moeda:</h5>
+                </div>
+
+                
+                <div class="col-lg-2 col-md-2 col-sm-12" style="padding-left:0; padding-right:80px;">
+                    <select class="custom-select input-data-elem" name="input-moeda1" id="input-moeda1">
+                      <?php include('includes/selectCurrency.html') ?>
+                    </select>
+                </div>
+
+                <div class="col-lg-1 col-md-1 col-sm-12" style="padding-right:50px;">
+                    <h5 id="input-inicio"> Moeda Desejada:</h5>
+                </div>
+
+
+                <div class="col-lg-2 col-md-2 col-sm-12" style="padding-left:0px; padding-right:70px;">
+                    <select class="custom-select input-data-elem"  name="input-moeda2" id="input-moeda2">
+                    <?php include('includes/selectCurrency.html') ?>
+                    </select>
+                </div>
+
+
+
+              
+
+                <div class="col-lg-2 col-md-2 col-sm-12 invisble" >
+                </div>
+
+              </div>     
+              
+              <div class="row" style="margin-top:50px; margin-left:50%  ;" >
+                 <input class="btn" type="submit" value="Visualizar ">
+              </div>
+
+          </form>
+        
+          <!--grafico vai aqui:-->
+
+          <div class="row">
+
+            <div class="col-lg-1 col-md-1 col-sm-12" style="height:1px;"></div>
+           
+          
+            <div class="col-lg-10 col-md-10 col-sm-12">
+              <canvas id="lineChart" height="400" width="1000" ></canvas>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+              <script type="text/javascript">
+                   var rotulos = <?php echo json_encode($labels); ?>;
+                   var dados = <?php echo json_encode($data); ?>;
+              </script>
+              <script type="text/javascript" src="js/chart.js"></script>
+            </div>
+
+
+
+            <div class="col-lg-1 col-md-1 col-sm-12" style="height:1px;"></div>
+            
+          </div>
+
+      </main>
+    </div> 
+
+
+
+    <div class="push"></div>
+  
+
+    <footer class="bg-dark footer">
       <p class="h6 text-center text-light pb-4 pt-4 mb-0">UFSBRA Câmbio - 2019 &copy; Todos os direitos reservados</p>
     </footer>
 

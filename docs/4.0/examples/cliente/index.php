@@ -23,7 +23,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <img style="height: 50px" src="Imagens/cambio.png" class="img-fluid pr-3">
+    <img style="height: 50px" src="images/cambio.png" class="img-fluid pr-3">
     <a class="navbar-brand text-white">UFSBRA Câmbio</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,9 +33,15 @@
         <li class="nav-item">
           <a class="nav-link active" href="index.php">Página Inicial</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="compras.php">Compras</a>
-        </li>
+        <!-- -->
+        <?php
+          if(isset($_SESSION['usuario_cpf'])) {
+        ?>
+            <li class="nav-item">
+              <a class="nav-link" href="compras.php">Compras</a>
+            </li>
+        <?php }
+        ?>
         <li class="nav-item">
           <a class="nav-link" href="cotacoes.php">Cotações</a>
         </li>
@@ -49,7 +55,7 @@
       <?php
         if(isset($_SESSION['usuario_cpf'])) {
         ?>
-            <a href="Central_1.php"><button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit"><img src="Imagens/central_user.png" width="30px" height="30px"> Seja Bem Vindo <b><?php echo $_SESSION['usuario_nome'] ?></b></button></a>
+            <a href="Central_1.php"><button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit"><img src="images/central_user.png" width="30px" height="30px"> Seja Bem Vindo <b><?php echo $_SESSION['usuario_nome'] ?></b></button></a>
             <a href="logout.php"><button class="btn btn-danger my-1 my-sm-0" type="submit" style="height:43px;">Sair</button></a>
       <?php
         } else {   
@@ -71,29 +77,38 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <center><img src="Imagens/moedas.jpg" class="img-fluid" style="max-width: 50%"></center>
+          <center><img src="images/moedas.jpg" class="img-fluid" style="max-width: 50%"></center>
           <h2 class="text-center">Moedas em espécie disponiveis</h2>
           <p class="text-center">A UFSBRA tem uma variedade enorme de moedas estrangeiras disponíveis para compra e venda no mercado. Verfique as informações de cada uma delas.</p>
           <p class="text-center"><a class="btn btn-warning" href="moedas.php" role="button">Ver detalhes &raquo;</a></p>
         </div>
         <div class="col-md-4">
-          <center><img src="Imagens/pagamento.jpg" class="img-fluid" style="max-width: 50%"></center>
+          <center><img src="images/pagamento.jpg" class="img-fluid" style="max-width: 50%"></center>
           <h2 class="text-center">Escolha a forma de pagamento de suas transações</h2>
           <p class="text-center">Todos os nossos clientes tem a opção de escolher o método de pagamento na compra de alguma moeda, tendo a escolha por dinheiro, por cartão de crédito e débito!</p>
           <p class="text-center"><a class="btn btn-warning" href="informacoes.php" role="button">Ver detalhes &raquo;</a></p>
         </div>
         <div class="col-md-4">
-          <center><img src="Imagens/central.png" class="img-fluid" style="max-width: 50%"></center>
+          <center><img src="images/central.png" class="img-fluid" style="max-width: 50%"></center>
           <h2 class="text-center">Central do Usuário</h2>
           <p class="text-center">Nosso sistema conta uma central de usuário contendo todas as operações realizadas no site como: status de pedidos de compra ou venda de moedas, histórico de suas transações até o momento, dados pessoais, entre outras
             informações.</p>
-          <p class="text-center"><a class="btn btn-warning" href="Central_1.php" role="button">Acessar Central de Usuário &raquo;</a></p>
+            <!-- -->
+          <?php
+          if(isset($_SESSION['usuario_cpf'])) {
+ 
+            echo '<p class="text-center"><a class="btn btn-warning" href="Central_1.php" role="button">Acessar Central de Usuário &raquo;</a></p>';
+
+          }else{
+            echo '<p class="text-center"><a class="btn btn-warning" href="../cadastro_login/login.php" role="button">Acessar Central de Usuário &raquo;</a></p>';
+          }
+          ?>
         </div>
       </div>
     </div>
-    <img src="Imagens/negocios.jpg" class="img-fluid" alt="Imagem responsiva" style="width:100%;">
-    <img src="Imagens/negocios2.jpg" class="img-fluid" alt="Imagem responsiva" style="width:100%;">
-    <img src="Imagens/money.jpg" class="img-fluid" alt="Imagem responsiva" style="width:100%;">
+    <img src="images/negocios.jpg" class="img-fluid" alt="Imagem responsiva" style="width:100%;">
+    <img src="images/negocios2.jpg" class="img-fluid" alt="Imagem responsiva" style="width:100%;">
+    <img src="images/money.jpg" class="img-fluid" alt="Imagem responsiva" style="width:100%;">
   </main>
 
   <footer class="bg-dark">

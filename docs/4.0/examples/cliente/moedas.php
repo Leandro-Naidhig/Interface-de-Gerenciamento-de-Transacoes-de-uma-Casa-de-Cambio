@@ -23,7 +23,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <img style="height: 50px" src="Imagens/cambio.png" class="img-fluid pr-3">
+    <img style="height: 50px" src="images/cambio.png" class="img-fluid pr-3">
     <a class="navbar-brand text-white">UFSBRA Câmbio</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,9 +33,14 @@
         <li class="nav-item">
           <a class="nav-link" href="index.php">Página Inicial</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="compras.php">Compras</a>
-        </li>
+        <?php
+          if(isset($_SESSION['usuario_cpf'])) {
+        ?>
+            <li class="nav-item">
+              <a class="nav-link" href="compras.php">Compras</a>
+            </li>
+        <?php }
+        ?>
         <li class="nav-item">
           <a class="nav-link" href="cotacoes.php">Cotações</a>
         </li>
@@ -49,7 +54,7 @@
       <?php
         if(isset($_SESSION['usuario_cpf'])) {
         ?>
-            <a href="Central_1.php"><button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit"><img src="Imagens/central_user.png" width="30px" height="30px"> Seja Bem Vindo <b><?php echo $_SESSION['usuario_nome'] ?></b></button></a>
+            <a href="Central_1.php"><button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit"><img src="images/central_user.png" width="30px" height="30px"> Seja Bem Vindo <b><?php echo $_SESSION['usuario_nome'] ?></b></button></a>
             <a href="logout.php"><button class="btn btn-danger my-1 my-sm-0" type="submit" style="height:43px;">Sair</button></a>
       <?php
         } else {   
@@ -107,7 +112,7 @@
           </div>
         </div>
         <div class="card border-0">
-          <center><img class="card-img-top mt-3" src="images/britain_flag.png" style="width:100px"></center>
+          <center><img class="card-img-top mt-3" src="images/flags/EUR-flag.png" style="width:100px"></center>
           <div class="card-body">
             <h5 class="card-title text-center"><b>EUR</b> - Euro</h5>
             <h6 class="card-title text-center">Reino Unido</h6>

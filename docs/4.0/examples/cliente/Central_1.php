@@ -30,7 +30,7 @@
 </head>
 <body>    
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <img style="height: 50px" src="Imagens/cambio.png" class="img-fluid pr-3">
+        <img style="height: 50px" src="images/cambio.png" class="img-fluid pr-3">
         <a class="navbar-brand text-white">UFSBRA Câmbio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -57,7 +57,7 @@
               <?php
                 if(isset($_SESSION['usuario_cpf'])) {
                 ?>
-                    <a href="../cliente/Central_1.php"><button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit"><img src="Imagens/central_user.png" width="30px" height="30px"> Seja Bem Vindo <b><?php echo $_SESSION['usuario_nome'] ?></b></button></a>
+                    <a href="../cliente/Central_1.php"><button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit"><img src="images/central_user.png" width="30px" height="30px"> Seja Bem Vindo <b><?php echo $_SESSION['usuario_nome'] ?></b></button></a>
                     <a href="../cliente/logout.php"><button class="btn btn-danger my-1 my-sm-0" type="submit" style="height:43px;">Sair</button></a>
               <?php
                 } else {   
