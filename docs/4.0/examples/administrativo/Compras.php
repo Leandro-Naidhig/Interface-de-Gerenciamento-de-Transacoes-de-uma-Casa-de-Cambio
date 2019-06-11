@@ -78,7 +78,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
         <div class="card-deck">
         <div class="card">
-            <img src="../cliente/Imagens/clientes.png" class="card-img-top" alt="...">
+            <img src="../cliente/images/clientes.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title text-center font-weight-bold">Número de clientes</h5>
                 <?php 
@@ -88,7 +88,7 @@
             </div>
         </div>
         <div class="card">
-            <img src="../cliente/Imagens/vendas.jpg" class="card-img-top" alt="...">
+            <img src="../cliente/images/vendas.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title text-center font-weight-bold">Número de transações</h5>
                 <?php 
@@ -98,7 +98,7 @@
             </div>
         </div>
         <div class="card">
-            <img src="../cliente/Imagens/compras.jpeg" class="card-img-top" alt="...">
+            <img src="../cliente/images/compras.jpeg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title text-center font-weight-bold">Número de moedas</h5>
                 <?php 
@@ -117,11 +117,13 @@
           </div>
         </form>
             <?php
-                $search_value_cod=$_POST["search_cod"];
-                $sql="select c.compra_id, c.cpf_fk, m1.nome as moeda_entrada, m2.nome as moeda_saida, c.valor, c.date, c.status FROM `compra` as c INNER JOIN `moeda` as m1 on c.moeda_usada_fk = m1.moeda_id INNER JOIN `moeda` as m2 on c.moeda_comprada_fk = m2.moeda_id WHERE c.compra_id = '".$search_value_cod."' ORDER BY c.date DESC ";
-                    
-                if(empty($search_value_cod) != 1){
-                    $res=$conn->query($sql);
+              if(isset($_POST["search_cod"])){
+                  $search_value_cod=$_POST["search_cod"];
+                  $sql="select c.compra_id, c.cpf_fk, m1.nome as moeda_entrada, m2.nome as moeda_saida, c.valor, c.date, c.status FROM `compra` as c INNER JOIN `moeda` as m1 on c.moeda_usada_fk = m1.moeda_id INNER JOIN `moeda` as m2 on c.moeda_comprada_fk = m2.moeda_id WHERE c.compra_id = '".$search_value_cod."' ORDER BY c.date DESC ";
+                      
+                  if(empty($search_value_cod) != 1){
+                      $res=$conn->query($sql);
+                  }
                 }
 
               ?>
@@ -133,11 +135,13 @@
           </div>
         </form>
             <?php
-                $search_value_cpf=$_POST["search_cpf"];
-                $sql="select c.compra_id, c.cpf_fk, m1.nome as moeda_entrada, m2.nome as moeda_saida, c.valor, c.date, c.status FROM `compra` as c INNER JOIN `moeda` as m1 on c.moeda_usada_fk = m1.moeda_id INNER JOIN `moeda` as m2 on c.moeda_comprada_fk = m2.moeda_id WHERE c.cpf_fk = '".$search_value_cpf."' ORDER BY c.date DESC";
-                
-                if(empty($search_value_cpf) != 1){
-                    $res=$conn->query($sql);
+                if(isset($_POST["search_cpf"])){
+                  $search_value_cpf=$_POST["search_cpf"];
+                  $sql="select c.compra_id, c.cpf_fk, m1.nome as moeda_entrada, m2.nome as moeda_saida, c.valor, c.date, c.status FROM `compra` as c INNER JOIN `moeda` as m1 on c.moeda_usada_fk = m1.moeda_id INNER JOIN `moeda` as m2 on c.moeda_comprada_fk = m2.moeda_id WHERE c.cpf_fk = '".$search_value_cpf."' ORDER BY c.date DESC";
+                  
+                  if(empty($search_value_cpf) != 1){
+                      $res=$conn->query($sql);
+                  }
                 }
 
               ?>
