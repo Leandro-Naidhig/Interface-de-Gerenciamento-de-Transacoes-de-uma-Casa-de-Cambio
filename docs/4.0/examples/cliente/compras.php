@@ -188,7 +188,7 @@
       <?php
         if (isset($_SESSION['usuario_cpf'])) {
             ?>
-      <a href="../cliente/Central_1.html"><button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit"><img src="images/central_user.png" width="30px" height="30px"> Seja Bem Vindo <b><?php echo $_SESSION['usuario_nome'] ?></b></button></a>
+      <a href="../cliente/Central_1.php"><button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit"><img src="images/central_user.png" width="30px" height="30px"> Seja Bem Vindo <b><?php echo $_SESSION['usuario_nome'] ?></b></button></a>
       <a href="../cliente/logout.php"><button class="btn btn-danger my-1 my-sm-0" type="submit" style="height:43px;">Sair</button></a>
       <?php
         } else {
@@ -377,7 +377,7 @@
               <label for="quantia" style="margin-left:30%" ;>CVV:</label>
               <div class="row" style="padding-left:3%;">
 
-                <input class="form-control" style="width:30%; margin-right:11%;" name="validade" id="validade" placeholder="Data" required>
+                <input class="form-control"  style="width:30%; margin-right:11%;" name="validade" id="validade" placeholder="mm/aa" required>
 
                 <input class="form-control" style="width:30%;" name="quantia" id="cvv" placeholder="Código CVV" required>
 
@@ -412,14 +412,14 @@
               <div style="display:block;">
               
                 <label class="my-1 mr-2 font-weight-bold" style="font-weight: normal!important;" for="inlineFormCustomSelectPref">Número:</label>        
-                <label class="my-1 mr-2 font-weight-bold" style="font-weight: normal!important;padding-left:55px" for="inlineFormCustomSelectPref">Estado:</label>
+                <!--<label class="my-1 mr-2 font-weight-bold" style="font-weight: normal!important;padding-left:55px" for="inlineFormCustomSelectPref">Estado:</label>-->
                 <label style="padding-left:35px; font-weight: normal!important;" class="my-1 mr-2 font-weight-bold" for="inlineFormCustomSelectPref">CEP:</label>
 
                 <div style="position:absolute;">
                   <input type="number" class="form-control" style="font-weight: normal!important;width:75px" id="input_numero" value="<?php echo $search_value_numero; ?>" required />
                 </div>
 
-               <div style="position:absolute; left:128px;">
+              <!-- <div style="position:absolute; left:128px;">
                   <select name="input_estado" id="input_estado" style = "width:75px;"id="select_pgto" class="form-control">
                    
                       <option value=" <?php echo $search_value_estado; ?>" disabled selected> <?php echo $search_value_estado; ?></option>
@@ -453,12 +453,12 @@
                       <option value="ES">Estrangeiro</option>
 
                   </select>           
-               </div>
+               </div>-->
                
                     
 
           
-                <div style="position:absolute; left:230px;">
+                <div style="position:absolute; left:110px;">
                   <input type="text" style="width:150px; font-weight: normal!important;" class="form-control" id="input_cep"  value="<?php echo $search_value_cep; ?>" required />
                 </div>
 
