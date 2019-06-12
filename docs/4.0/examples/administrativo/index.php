@@ -28,7 +28,7 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2 bg-secondary">
+        <div class="col-md-2 bg-secondary" style="height:900px;">
             <div class="bg-secondary text-center pb-2">
                 <figure>
                     <img src="Imagens/cambio.png" class="img-fluid mt-3" alt="..." style="width: 5rem;">
@@ -69,6 +69,7 @@
                   Logout
                 </a>
               </li>
+              <br><br><br>
             </ul>
           </div>
         <main role="main" class="col-lg-10">
@@ -124,7 +125,7 @@
     <script>
       feather.replace()
     </script>
-    <footer class="bg-dark">
+    <footer class="bg-dark fixed-bottom">
         <p class="h6 text-center text-light pb-4 pt-4 mb-0">UFSBRA Câmbio - 2019 &copy; Todos os direitos reservados</p>
     </footer>
   </body>

@@ -26,8 +26,8 @@
     <link href="styles/dashboard.css" rel="stylesheet">
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
+    <div class="container-fluid ">
+      <div class="row" style="height:900px;">
         <div class="col-md-2 bg-secondary">
             <div class="bg-secondary text-center pb-2">
                 <figure>
@@ -110,7 +110,7 @@
     <script>
       feather.replace()
     </script>
-    <footer class="bg-dark">
+    <footer class="bg-dark fixed-bottom">
         <p class="h6 text-center text-light pb-4 pt-4 mb-0">UFSBRA Câmbio - 2019 &copy; Todos os direitos reservados</p>
     </footer>
   </body>

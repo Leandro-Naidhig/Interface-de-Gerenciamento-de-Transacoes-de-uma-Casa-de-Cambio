@@ -109,6 +109,7 @@
         </div>
         </div>
             <hr>
+
         <form action="" method="post" class="bg-warning mr-1" style="border-radius: 10px">
           <label class="mx-4 mt-2 h6">Procurar por Código:</label>
           <div class="form-group mx-4">
@@ -127,6 +128,7 @@
                 }
 
               ?>
+ 
         <form action="" method="post" class="bg-warning mr-1" style="border-radius: 10px">
           <label class="mx-4 mt-2 h6">Procurar por CPF:</label>
           <div class="form-group mx-4">
@@ -145,6 +147,30 @@
                 }
 
               ?>
+
+
+      <form action="" method="post" class="bg-warning mr-1" style="border-radius: 10px">
+          <label class="mx-4 mt-2 h6">Procurar por Moeda:</label>
+          <div class="form-group mx-4">
+            <input type="number" name="search_moeda" id="search_moeda" class="form-control mr-sm-1" aria-describedby="passwordHelpInline" placeholder="Apenas gitos">
+            <input type="submit" class="btn btn-primary my-2 mb-3" value="Pesquisar">
+          </div>
+        </form>
+            <?php
+              if(isset($_POST["search_moeda"])){
+                  $search_value_moeda=$_POST["search_moeda"];
+                  $sql="select c.compra_id, c.cpf_fk, m1.nome as moeda_entrada, m2.nome as moeda_saida, c.valor, c.date, c.status FROM `compra` as c INNER JOIN `moeda` as m1 on c.moeda_usada_fk = m1.moeda_id INNER JOIN `moeda` as m2 on c.moeda_comprada_fk = m2.moeda_id WHERE c.moeda_comprada_fk = '".$search_value_moeda."' ORDER BY c.date DESC ";
+                      
+                  if(empty($search_value_moeda) != 1){
+                    
+                      $res=$conn->query($sql);
+                  }
+                }
+
+              ?>
+
+
+
           <h2 class="pt-5 text-center">Últimas transações</h2>
           <div class="table-responsive">
             <table class="table table-striped table-sm">
@@ -185,7 +211,21 @@
                   <td><?php echo $obj->date?></td>
                   <td><?php echo $obj->status?></td>
                 </tr>
-            <?php } else 
+            <?php } else if (empty($search_value_moeda) != 1)
+                        while ($obj = $res->fetch_object()) {
+            ?>
+                  <tr>
+                  <td><?php echo $obj->compra_id?></td>
+                  <td><?php echo $obj->cpf_fk?></td>
+                  <td><?php echo $obj->moeda_entrada?></td>
+                  <td><?php echo $obj->moeda_saida?></td>
+                  <td><?php echo $obj->valor?></td>
+                  <td><?php echo $obj->date?></td>
+                  <td><?php echo $obj->status?></td>
+                </tr>
+
+                
+            <?php }  else{ 
                         while ($obj = $result->fetch_object()) {
             ?>
                   
@@ -198,7 +238,7 @@
                   <td><?php echo $obj->date?></td>
                   <td><?php echo $obj->status?></td>
                 </tr>
-            <?php } ?>
+            <?php }}   ?>
                   
               </tbody>
             </table>
