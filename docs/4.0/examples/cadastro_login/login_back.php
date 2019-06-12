@@ -1,7 +1,7 @@
 <?php
 
 //Conexão com o banco de dados
-$conexao = mysqli_connect("localhost", "login", "senha", "UFSBRA_Cambio");
+$conexao = mysqli_connect("localhost", "root", "", "UFSBRA_Cambio");
 
 //Recebe as variaveis do POST
 $email  = $_POST['email'];  
