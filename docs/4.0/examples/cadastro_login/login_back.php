@@ -35,7 +35,7 @@ if(isset($email) && isset($senha)){
     } else {
         
         //Verifica se existe o email no banco de dados
-        $sql = "SELECT * FROM `funcionario` WHERE `funcionario_email` = '".$email."' AND `funcionario_senha` = '123' LIMIT 1";
+        $sql = "SELECT * FROM `funcionario` WHERE `email` = '".$email."' AND `senha` = 'admin123' LIMIT 1";
         $result = $conexao->query($sql);
         
         //Se foi encontrado um resultado
