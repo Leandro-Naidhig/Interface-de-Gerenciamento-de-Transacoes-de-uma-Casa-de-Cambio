@@ -10,4 +10,6 @@ Projeto Prático da disciplina de Gestão de Projetos
 
 Nome: [Leandro Naidhig](https://github.com/Leandro-Naidhig/) RA: 726555
 
+Nome: [Lucas Andrade](https://github.com/mrSparroow) RA: 743563
+
 Nome: [Michele Argolo Carvalho](https://github.com/xmixele) RA: 726573
